@@ -116,3 +116,20 @@ A Gradio web interface allows users to input pollutant values and receive:
 ```bash
 git clone https://github.com/your-username/air-quality-health-risk.git
 cd air-quality-health-risk
+## ⚠️ Limitations
+
+- Trained on single city (Delhi)
+- Not real-time sensor connected
+- Not a medical diagnosis system
+- Based on environmental exposure only
+## 🔮 Future Work
+
+- Real-time pollution API integration
+- Next-day forecasting using time-series models
+- Personalized alerts
+- Smart city integration
+## 📚 Reference
+
+Central Pollution Control Board (CPCB), Government of India  
+Air Quality Data in India (2015–2020)  
+https://www.kaggle.com/datasets/rohanrao/air-quality-data-in-india
