@@ -1,39 +1,37 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[12pt]{article}
 
-\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
-\usepackage{amsmath}
-\usepackage{booktabs}
-\usepackage{geometry}
 \usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{verbatim}
 \usepackage{xcolor}
 
-\geometry{margin=1in}
+\titleformat{\section}{\large\bfseries}{}{0em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
 
-\title{\textbf{Air Quality-Driven Early Warning Health Risk Prediction System}}
-\author{Alka}
-\date{}
+\setlist[itemize]{noitemsep, topsep=2pt}
 
 \begin{document}
 
-\maketitle
-
 \begin{center}
-\textit{A Machine Learning Based Environmental Health Risk Prediction Framework}
+{\LARGE \textbf{Air Quality-Driven Early Warning Health Risk Prediction System}}
 \end{center}
 
-\section*{Abstract}
+\vspace{0.5cm}
 
-This project presents a machine learning based system that predicts environmental health risk levels from air pollution exposure patterns. Unlike conventional air quality systems that only report present pollution levels, this model analyzes historical pollutant exposure and classifies whether a day is \textbf{High Risk} or \textbf{Normal Risk}. The system provides an early warning to support preventive awareness and health precautions.
+A machine learning–based system that predicts environmental health risk levels from air pollution exposure patterns.
 
-\section{Problem Statement}
+The model analyzes historical pollutant data and classifies whether a day is High Risk or Normal Risk, helping support preventive awareness.
 
-Most air quality monitoring systems report only current pollution levels.  
-They do not determine whether accumulated exposure over recent days is dangerous.
+\section*{Problem Statement}
 
-This project predicts health risk based on \textbf{cumulative exposure patterns}, enabling individuals to take preventive measures before serious health impact occurs.
+Most air quality systems only report the current pollution level. \\
+They do not indicate whether recent exposure patterns are dangerous.
 
-\section{Objectives}
+This project predicts health risk from cumulative exposure, enabling people to take precautions before serious impact.
+
+\section*{Objective}
 
 \begin{itemize}
 \item Analyze historical air quality data
@@ -42,11 +40,11 @@ This project predicts health risk based on \textbf{cumulative exposure patterns}
 \item Provide a simple early warning interface
 \end{itemize}
 
-\section{Dataset}
+\section*{Dataset}
 
-\textbf{Dataset:} Air Quality Data in India (2015–2020) \\
-\textbf{City Used:} Delhi \\
-\textbf{Source:} CPCB – Government of India (Kaggle) \\
+Dataset: Air Quality Data in India (2015–2020) \\
+City Used: Delhi \\
+Source: Kaggle (CPCB – Government of India) \\
 \url{https://www.kaggle.com/datasets/rohanrao/air-quality-data-in-india}
 
 \subsection*{Pollutants Used}
@@ -60,64 +58,61 @@ This project predicts health risk based on \textbf{cumulative exposure patterns}
 \item O$_3$
 \end{itemize}
 
-These pollutants are strongly linked to respiratory and cardiovascular health risks.
+These pollutants are linked to respiratory and cardiovascular health risks.
 
-\section{Methodology}
+\section*{Methodology}
 
-\subsection{Data Preprocessing}
+\subsection*{1. Data Preprocessing}
 
 \begin{itemize}
 \item Filtered Delhi city data
 \item Converted Date column to datetime
 \item Sorted chronologically
-\item Missing values handled using time-based interpolation
+\item Handled missing values using time-based interpolation
 \end{itemize}
 
-\subsection{Feature Engineering}
+\subsection*{2. Feature Engineering}
 
-To capture exposure rather than single-day values:
+To capture pollution exposure instead of single-day values:
 
-\subsubsection*{Lag Features}
+\textbf{Lag Features}
 \begin{itemize}
-\item Previous 1-day level
-\item Previous 3-day level
-\item Previous 7-day level
+\item Previous 1, 3, and 7 day pollution levels
 \end{itemize}
 
-\subsubsection*{Rolling Exposure}
+\textbf{Rolling Exposure}
 \begin{itemize}
 \item 3-day moving average
 \item 7-day moving average
 \end{itemize}
 
-\subsection{Target Variable}
+\subsection*{3. Target Variable}
 
-A day is labeled \textbf{High Risk} if:
+A day is labeled High Risk if:
 
-\[
-PM2.5_{3-day\ average} > Threshold
-\]
+PM2.5 3-day average $>$ threshold
 
-This reflects cumulative exposure impact rather than instant pollution spikes.
+This reflects cumulative exposure impact.
 
-\section{Model Training}
+\section*{Model Training}
 
-The problem is formulated as a \textbf{Binary Classification} task.
+Problem formulated as Binary Classification
 
-\subsection*{Models Trained}
+Models trained:
+
 \begin{itemize}
 \item Logistic Regression
 \item Random Forest
 \item XGBoost
 \end{itemize}
 
-A time-based train-test split was used to avoid data leakage.
+Time-based train–test split used to avoid data leakage.
 
-\section{Evaluation Strategy}
+\section*{Evaluation Strategy}
 
-Priority was given to \textbf{Recall} to avoid missing dangerous days.
+Focus was placed on Recall to avoid missing dangerous days.
 
-\subsection*{Metrics Used}
+Metrics used:
 
 \begin{itemize}
 \item Accuracy
@@ -127,9 +122,9 @@ Priority was given to \textbf{Recall} to avoid missing dangerous days.
 \item False Negatives
 \end{itemize}
 
-\textbf{Random Forest} was selected as the final model.
+Random Forest selected as final model.
 
-\section{Deployment}
+\section*{Deployment}
 
 A Gradio web interface allows users to input pollutant values and receive:
 
@@ -139,7 +134,7 @@ A Gradio web interface allows users to input pollutant values and receive:
 \item Health advisory
 \end{itemize}
 
-\section{How to Run}
+\section*{How to Run}
 
 \subsection*{1. Clone Repository}
 \begin{verbatim}
@@ -157,16 +152,16 @@ pip install -r requirements.txt
 python app.py
 \end{verbatim}
 
-\section{Limitations}
+\section*{Limitations}
 
 \begin{itemize}
-\item Trained on single city (Delhi)
-\item Not connected to real-time sensors
+\item Trained on 'single city (Delhi)
+\item Not real-time sensor connected
 \item Not a medical diagnosis system
-\item Based only on environmental exposure
+\item Based on environmental exposure only
 \end{itemize}
 
-\section{Future Work}
+\section*{Future Work}
 
 \begin{itemize}
 \item Real-time pollution API integration
@@ -175,16 +170,18 @@ python app.py
 \item Smart city integration
 \end{itemize}
 
-\section{References}
+\section*{Reference}
 
 Central Pollution Control Board (CPCB), Government of India \\
 Air Quality Data in India (2015–2020) \\
 \url{https://www.kaggle.com/datasets/rohanrao/air-quality-data-in-india}
 
-\vspace{1cm}
+\vspace{0.8cm}
 
 \begin{center}
-\textbf{Author: Alka}
+\textbf{Author}
+
+Alka
 \end{center}
 
 \end{document}
