@@ -109,6 +109,10 @@ A Gradio web interface allows users to input pollutant values and receive:
 - Health advisory
 
 ---
+## 7.1 Interface Preview
+
+![Gradio Interface](interface.png)
+
 
 ## 8. How to Run
 
