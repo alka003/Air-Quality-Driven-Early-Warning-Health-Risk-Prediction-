@@ -5,7 +5,7 @@ The model analyzes historical pollutant data and classifies whether a day is **H
 
 ---
 
-## 📌 Problem Statement
+## 1. Problem Statement
 
 Most air quality systems only report the current pollution level.  
 They do not indicate whether recent exposure patterns are dangerous.
@@ -14,7 +14,7 @@ This project predicts health risk from cumulative exposure, enabling people to t
 
 ---
 
-## 🎯 Objective
+## 2. Objective
 
 - Analyze historical air quality data
 - Identify pollution exposure patterns
@@ -23,14 +23,14 @@ This project predicts health risk from cumulative exposure, enabling people to t
 
 ---
 
-## 🗂️ Dataset
+## 3. Dataset
 
 **Dataset:** Air Quality Data in India (2015–2020)  
 **City Used:** Delhi  
 **Source:** Kaggle (CPCB – Government of India)  
-🔗 https://www.kaggle.com/datasets/rohanrao/air-quality-data-in-india
+https://www.kaggle.com/datasets/rohanrao/air-quality-data-in-india
 
-### Pollutants Used
+### 3.1 Pollutants Used
 
 - PM2.5
 - PM10
@@ -43,15 +43,15 @@ These pollutants are linked to respiratory and cardiovascular health risks.
 
 ---
 
-## 🧠 Methodology
+## 4. Methodology
 
-### 1. Data Preprocessing
+### 4.1 Data Preprocessing
 - Filtered Delhi city data
 - Converted Date column to datetime
 - Sorted chronologically
 - Handled missing values using time-based interpolation
 
-### 2. Feature Engineering
+### 4.2 Feature Engineering
 
 To capture pollution exposure instead of single-day values:
 
@@ -62,7 +62,7 @@ To capture pollution exposure instead of single-day values:
 - 3-day moving average
 - 7-day moving average
 
-### 3. Target Variable
+### 4.3 Target Variable
 
 A day is labeled **High Risk** if:
 
@@ -72,7 +72,7 @@ This reflects cumulative exposure impact.
 
 ---
 
-## 🤖 Model Training
+## 5. Model Training
 
 Problem formulated as **Binary Classification**
 
@@ -85,7 +85,7 @@ Time-based train–test split used to avoid data leakage.
 
 ---
 
-## 📊 Evaluation Strategy
+## 6. Evaluation Strategy
 
 Focus was placed on **Recall** to avoid missing dangerous days.
 
@@ -100,7 +100,7 @@ Focus was placed on **Recall** to avoid missing dangerous days.
 
 ---
 
-## 🖥️ Deployment
+## 7. Deployment
 
 A Gradio web interface allows users to input pollutant values and receive:
 
@@ -110,26 +110,52 @@ A Gradio web interface allows users to input pollutant values and receive:
 
 ---
 
-## 🚀 How to Run
+## 8. How to Run
 
-### 1. Clone Repository
+### 8.1 Clone Repository
 ```bash
 git clone https://github.com/your-username/air-quality-health-risk.git
 cd air-quality-health-risk
-## ⚠️ Limitations
+```
+
+### 8.2 Install Requirements
+```bash
+pip install -r requirements.txt
+```
+
+### 8.3 Run Application
+```bash
+python app.py
+```
+
+---
+
+## 9. Limitations
 
 - Trained on single city (Delhi)
 - Not real-time sensor connected
 - Not a medical diagnosis system
 - Based on environmental exposure only
-## 🔮 Future Work
+
+---
+
+## 10. Future Work
 
 - Real-time pollution API integration
 - Next-day forecasting using time-series models
 - Personalized alerts
 - Smart city integration
-## 📚 Reference
+
+---
+
+## 11. Reference
 
 Central Pollution Control Board (CPCB), Government of India  
 Air Quality Data in India (2015–2020)  
 https://www.kaggle.com/datasets/rohanrao/air-quality-data-in-india
+
+---
+
+## 12. Author
+
+**Alka**
